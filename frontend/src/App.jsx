@@ -924,7 +924,7 @@ const handleChatFile = e => {
           ) : (
 
             <span>
-  {m.text || m.message || m.content || ""}
+  {String(m.text ?? m.message ?? m.content ?? "")}
 </span>
 
           )}
