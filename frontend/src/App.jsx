@@ -564,9 +564,12 @@ function App() {
   if (!text || !permission.chat) return;
 
   socketRef.current?.emit("chat-message", {
-    type: "text",
-    text
-  });
+  type: "text",
+  text,
+  message: text
+});
+
+
 
   setMessage("");
 };
@@ -918,8 +921,8 @@ const handleChatFile = e => {
           ) : (
 
             <span>
-              {m.text}
-            </span>
+  {m.text || m.message || m.content || ""}
+</span>
 
           )}
 
