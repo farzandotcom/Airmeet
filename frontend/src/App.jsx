@@ -395,7 +395,10 @@ function App() {
     });
     socket.on("user-left", ({ id }) => cleanupPeer(id));
     socket.on("participant-updated", ({ id, patch }) => updateParticipant(id, patch));
-    socket.on("chat-message", msg => setChat(c => [...c, msg]));
+    socket.on("chat-message", msg => {
+  console.log("CHAT RECEIVED:", msg);
+  setChat(c => [...c, msg]);
+});
     socket.on("reaction", r => {
       setReaction(r);
       window.setTimeout(() => setReaction(null), 1600);
